@@ -1,7 +1,10 @@
 from typing import TYPE_CHECKING
 
 from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
-
+from sqlalchemy import (
+    Column,
+    Integer,
+)
 
 from core.types.user_id import UserIdType
 from .base import Base
@@ -12,6 +15,7 @@ if TYPE_CHECKING:
 
 
 class User(Base, IdIntPkMix, SQLAlchemyBaseUserTable[UserIdType]):
+    balance = Column(Integer, default=1000, nullable=False)
 
     @classmethod
     def get_db(cls, session: "AsyncSession"):
