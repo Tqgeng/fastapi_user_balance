@@ -6,12 +6,12 @@ from core.types.user_id import UserIdType
 
 
 class UserRead(schemas.BaseUser[UserIdType]):
-    pass
+    balance: int
 
 
 class UserCreate(schemas.BaseUserCreate):
-    pass
+    balance: int = 1000
 
 
 class UserUpdate(schemas.BaseUserUpdate):
-    pass
+    balance: int | None = None
